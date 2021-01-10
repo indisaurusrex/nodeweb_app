@@ -2,7 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+// for the shopify items
 import Client from 'shopify-buy';
+// for the responsiveness
+import { Breakpoint, BreakpointProvider } from 'react-socks';
 // import reportWebVitals from './reportWebVitals';
 
 const client = Client.buildClient({
@@ -12,7 +15,9 @@ const client = Client.buildClient({
 
 ReactDOM.render(
   <React.StrictMode>
-    <App client={client}/>
+    <BreakpointProvider>
+        <App client={client}/>
+    </BreakpointProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
