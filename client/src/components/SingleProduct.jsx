@@ -164,6 +164,7 @@ class SingleProduct extends Component {
                                                         </span>
                                                     </span>
                                                 </p>
+                                                <div> <br></br></div>
                                                 <div className="add-to-cart-wrapper" class="text-center">
                                                     <span className="single-quantity body-text">
                                                         {quantityField}
