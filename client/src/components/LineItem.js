@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
 
 
 class LineItem extends Component {
@@ -21,45 +20,33 @@ class LineItem extends Component {
     }
 
     render() {
-        console.log(this.props.line_item.quantity)
-        // i added some temporary in-line styling just so the images wouldn't block out the whole cart
-        const imgStyle = {
-            height: '50px',
-        }
         return (
-            <Container>
-                <Row className="cart-qty-desc-cost">
-                    <Col xs="2"><p className="body-text">Qty</p></Col>
-                    <Col xs="8"><p className="body-text">Description</p></Col>
-                    <Col xs="2"><p className="body-text">Price</p></Col>
-                </Row>
-                <Row className="cart-product-details-wrapper">
-                    <Col xs="2">
-                        <div className="qty-remove-wrapper">
-                            <button className="remove-button" onClick={() => this.props.removeLineItemInCart(this.props.line_item.id)}> remove </button>
-                            <span>{this.props.line_item.quantity}</span>
+            <li className="Line-item">
+                <div className="Line-item__img">
+                    {this.props.line_item.variant.image ? <img src={this.props.line_item.variant.image.src} alt={`${this.props.line_item.title} product shot`} /> : null}
+                </div>
+                <div className="Line-item__content">
+                    <div className="Line-item__content-row">
+                        <div className="Line-item__variant-title">
+                            {this.props.line_item.variant.title}
                         </div>
-                    </Col>
-                    <Col xs="8">
-                        <div>
-                            {this.props.line_item.variant.image ? <img src={this.props.line_item.variant.image.src} alt={`${this.props.line_item.title} product shot`} style={imgStyle} /> : null}
-                        </div>
-                        <span>
+                        <span className="Line-item__title">
                             {this.props.line_item.title}
                         </span>
-                    </Col>
-                    <Col xs="2">
-                        <div>
-                            <div>
-
-                            </div>
-                            <span>
-                                ${(this.props.line_item.quantity * this.props.line_item.variant.price).toFixed(2)}
-                            </span>
+                    </div>
+                    <div className="Line-item__content-row">
+                        <div className="Line-item__quantity-container">
+                            <button className="Line-item__quantity-update" onClick={() => this.decrementQuantity(this.props.line_item.id)}>-</button>
+                            <span className="Line-item__quantity">{this.props.line_item.quantity}</span>
+                            <button className="Line-item__quantity-update" onClick={() => this.incrementQuantity(this.props.line_item.id)}>+</button>
                         </div>
-                    </Col>
-                </Row>
-            </Container>
+                        <span className="Line-item__price">
+                            £ {(this.props.line_item.quantity * this.props.line_item.variant.price).toFixed(2)}
+                        </span>
+                        <button className="Line-item__remove" onClick={() => this.props.removeLineItemInCart(this.props.line_item.id)}>×</button>
+                    </div>
+                </div>
+            </li>
         );
     }
 }

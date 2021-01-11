@@ -46,7 +46,7 @@ function Footer() {
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <h4 class="mb-3">Where to find us</h4>
-                            <p><strong>Golden Shoe</strong><br />13/25 New Avenue<br />New Heaven<br />45Y 73J<br />England<br /><strong>Great Britain</strong></p>
+                            <p><strong>Golden Shoe</strong><br />7 Oxford Street<br />London<br />W1D 1BS<br />England<br /><strong>Great Britain</strong></p>
                             <a href="/">Contact</a>
                             <hr class="d-block d-md-none" />
                         </div>

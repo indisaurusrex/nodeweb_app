@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Searchbar from './Searchbar';
 import logoLarge from '../img/GSlogoLarge.png';
 import logoSmall from '../img/GSlogoSmall.png';
 import cartIcon from '../assets/cart-icon.svg';
@@ -44,11 +43,11 @@ class Header extends Component {
                 <span class="sr-only">Golden Shoe - go to homepage</span>
             </a>
             <div class="navbar-buttons">
-                <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
-                            <button className="btn btn-outline-secondary navbar-toggler" onClick={this.props.handleCartOpen}>
-
-                                
-                <i class="fa fa-shopping-cart"></i>
+                <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler">
+                    <span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i>
+                </button>
+                <button className="btn btn-outline-secondary navbar-toggler" onClick={this.props.handleCartOpen}>
+                    <i class="fa fa-shopping-cart"></i>
                 </button>
             </div>
             <div id="navigation" class="collapse navbar-collapse">

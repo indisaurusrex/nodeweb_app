@@ -37,7 +37,7 @@ class Searchbar extends Component {
         return (
             <div className="search-wrapper">
                 <div onClick={(e) => { this.handleClick(e) }} className='search-icon-wrapper'>
-                    <a href='#'>
+                    <a href='/'>
                         <img src={require("../assets/search-icon.svg")} alt="" />
                     </a>
                 </div>

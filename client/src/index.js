@@ -1,12 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// put this one back in for the other stuff;
-// import './App.css';
 
-// for the shopify items
 import Client from 'shopify-buy';
-// import reportWebVitals from './reportWebVitals';
 import App from './App';
 
 const client = Client.buildClient({
@@ -15,13 +11,8 @@ const client = Client.buildClient({
 });
 
 ReactDOM.render(
-//   <React.StrictMode>
+  <React.StrictMode>
         <App client={client}/>,
-//   </React.StrictMode>,  
+  </React.StrictMode>,  
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();

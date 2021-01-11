@@ -8,4 +8,9 @@ To save the build files to github, remove `/build` from `client/.gitignore`
 `npm run client:build` to build 
 
 Using react socks to make responsiveness easy: https://medium.com/better-programming/react-socks-and-responsive-web-design-with-react-63b766d000bd
+Didn't use this in the end
+
+This was really helpful: https://github.com/calvchum/wholefoods-shopify/blob/master/src/components/SingleProduct.js
+
+Style template by Bootstrapious from https://bootstrapious.com/ (Obaju E-commerce template)
 

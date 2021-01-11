@@ -41,19 +41,19 @@ class Cart extends Component {
           <div className="Cart-info clearfix">
             <div className="Cart-info__total Cart-info__small">Subtotal</div>
             <div className="Cart-info__pricing">
-              <span className="pricing">$ {this.props.checkout.subtotalPrice}</span>
+              <span className="pricing">£ {this.props.checkout.subtotalPrice}</span>
             </div>
           </div>
           <div className="Cart-info clearfix">
             <div className="Cart-info__total Cart-info__small">Taxes</div>
             <div className="Cart-info__pricing">
-              <span className="pricing">$ {this.props.checkout.totalTax}</span>
+              <span className="pricing">£ {this.props.checkout.totalTax}</span>
             </div>
           </div>
           <div className="Cart-info clearfix">
             <div className="Cart-info__total Cart-info__small">Total</div>
             <div className="Cart-info__pricing">
-              <span className="pricing">$ {this.props.checkout.totalPrice}</span>
+              <span className="pricing">£ {this.props.checkout.totalPrice}</span>
             </div>
           </div>
           <button className="Cart__checkout button" onClick={this.openCheckout}>Checkout</button>

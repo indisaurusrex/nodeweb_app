@@ -65,9 +65,9 @@ class SingleProduct extends Component {
                                 <div class="col-lg-12">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                            <li class="breadcrumb-item"><a href="#">Looks and Trends</a></li>
-                                            <li class="breadcrumb-item"><a href="#">Winter</a></li>
+                                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                            <li class="breadcrumb-item"><a href="/">Looks and Trends</a></li>
+                                            <li class="breadcrumb-item"><a href="/">Winter</a></li>
                                             <li aria-current="page" class="breadcrumb-item active">LED High Tops</li>
                                         </ol>
                                     </nav>
@@ -156,7 +156,7 @@ class SingleProduct extends Component {
                                                 <h1 class="text-center">{title}</h1>
                                                 <p>{this.props.product.description || 'A fine fine fiiine product'}</p>
                                                 <p class="goToDescription"><a href="#details" class="scroll-to">Scroll to further product details, material &amp; care and sizing</a></p>
-                                                <p class="price">${this.props.product.variants[0].price || '£58.99'}</p>
+                                                <p class="price">£{this.props.product.variants[0].price || '£58.99'}</p>
                                                 <p class="text-center buttons">
                                                     <span className="single-variant-selectors body-text">
                                                         <span>
@@ -170,7 +170,7 @@ class SingleProduct extends Component {
                                                     </span>
                                                     {addToCartButton}
                                                 </div>
-                                                <hr></hr>
+                                                <hr />
                                                 <div class="text-center">
                                                     <h3>Delivery</h3>
                                                     <p>Your item will be delivered within 4 business days of purchase.</p>
@@ -219,12 +219,10 @@ class SingleProduct extends Component {
                                     </div>
                                 </div>
                             </div>
-                            
                         </div>
                     </div>
                 </div>
             </div>
-            
         )
     }
 };

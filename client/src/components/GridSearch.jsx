@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 
 class GridSearch extends Component {
-    constructor(props) {
-        super(props);
-    }
-
+    
     handleChange(e) {
         const search = e.target.value
         this.props.updateSearch(search);
