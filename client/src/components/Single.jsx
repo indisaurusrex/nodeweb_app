@@ -12,6 +12,7 @@ class Single extends Component {
 
         let i = this.props.products.findIndex((product) => product.id === productId);
         let product = this.props.products[i];
+        console.log(product);
 
         if (product === undefined) {
             console.log('Loading products')

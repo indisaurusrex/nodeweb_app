@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// put this one back in for the other stuff;
+// import './App.css';
+
 // for the shopify items
 import Client from 'shopify-buy';
-// for the responsiveness
-import { Breakpoint, BreakpointProvider } from 'react-socks';
 // import reportWebVitals from './reportWebVitals';
+import App from './App';
 
 const client = Client.buildClient({
     storefrontAccessToken: 'af0600946a50abc38014d844b7920c01',
@@ -14,11 +15,9 @@ const client = Client.buildClient({
 });
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BreakpointProvider>
-        <App client={client}/>
-    </BreakpointProvider>
-  </React.StrictMode>,
+//   <React.StrictMode>
+        <App client={client}/>,
+//   </React.StrictMode>,  
   document.getElementById('root')
 );
 

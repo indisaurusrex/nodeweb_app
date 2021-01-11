@@ -1,0 +1,79 @@
+// Entire component wrapper
+.single-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+// Styles for adding a product to the cart
+.add-to-cart-wrapper {
+  display: flex;
+  border: 1px $navy solid;
+  justify-content: space-between;
+  width: 400px;
+  flex-shrink: 1;
+      align-items: center;
+  & button {
+    width: 80%;
+    background: $navy;
+    color: $white;
+    border: none;
+    padding: 10px 0px;
+  }
+  & .single-quantity {
+    height: 100%;
+    width: 20%;
+    color: $white;
+    text-align:center;
+    & input {
+      width: calc(100% - 1px);
+      border-radius: 0px;
+      text-align: center;
+      align-content: center;
+      padding: 10px 0px;
+      border: none;
+      }
+    & input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0; 
+    }
+  }
+}
+
+// Styles for the variant of a product selector dropdown menu
+.single-variant-selectors {
+  border: 1px $navy solid;
+  width: 400px;
+  flex-shrink: 1;
+  margin-bottom: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0px;
+  cursor: hand;
+}
+.variant-selector {
+  outline: none;
+  border: none;
+  background-color: #fff;
+  height: 100%;
+  &:focus {
+    outline: $navy;
+  } 
+}
+
+@media only screen and (max-width: 600px) {
+.product-selections-wrapper {
+  padding: 24px 0px;
+}
+  .add-to-cart-wrapper, .single-variant-selectors  {
+    max-width: 100%;
+  }
+  .single-wrapper {
+    padding: 8px;
+  }
+}
+
+
+
