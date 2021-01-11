@@ -1,0 +1,59 @@
+// Color Variables
+$navy: #181825;
+$red: #A40016;
+$grey: #D0D0D0;
+$white: #F9F9F9;
+
+// Font Size Variables
+$body: 15px;
+$body-uppercase: 12px;
+$sub-header: 20px;
+$header: 25px;
+
+// Type
+$font: 'Fira Sans';
+
+
+@import '_footer.scss';
+@import '_header.scss';
+@import '_location.scss';
+@import '_cart.scss';
+@import '_landing.scss';
+@import '_products.scss';
+@import '_contact.scss';
+@import '_about.scss';
+@import '_single.scss';
+@import '_offerings.scss';
+@import '_emailSignup.scss';
+@import '_burgerMenu.scss';
+@import '_filterOptions.scss';
+@import '_searchBar.scss';
+
+body {
+  margin: 0px;
+  font-family: 'Fira Sans', sans-serif;
+}
+.header {
+  font-size: $header;
+  font-family: $font;
+
+}
+.subheader {
+  font-size: $sub-header;
+  font-family: $font;
+}
+.body-uppercase {
+  font-size: $body-uppercase;
+  text-transform: uppercase;
+  margin-bottom: 0px;
+  font-family: $font;
+
+}
+.body-text {
+  font-size: $body;
+  font-weight: 400;
+  font-family: $font;
+}
+
+
+

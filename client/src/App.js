@@ -1,30 +1,13 @@
 import React, { Component } from 'react';
-import Products from './components/Products';
+import { BrowserRouter, Route } from 'react-router-dom';
+import ProductGrid from './components/ProductGrid';
+import Header from './components/Header';
+import Single from './components/Single';
+import Footer from './components/Footer';
 import Cart from './components/Cart';
-// import './App.css';
-// import axios from 'axios';
+import Recommendations from './components/Recommendations';
 
 class App extends Component {
-
-    state = {
-        response: {}
-    };
-
-    // componentDidMount() {
-    //     axios.get('/api/v1/say-something').then((res) => {
-    //         const response = res.data;
-    //         this.setState({ response });
-    //     });
-    // }
-        // render() {
-    //     return (
-    //         <div className="App">
-    //             <h1>Hello from the frontend!</h1>
-    //             <h1>{this.state.response.body}</h1>
-    //         </div>
-    //     );
-    // }
-
     constructor() {
         super();
 
@@ -32,13 +15,18 @@ class App extends Component {
             isCartOpen: false,
             checkout: { lineItems: [] },
             products: [],
-            shop: {}
+            shop: {},
+            search: '',
+            searchResults: {}
         };
 
         this.handleCartClose = this.handleCartClose.bind(this);
+        this.handleCartOpen = this.handleCartOpen.bind(this);
         this.addVariantToCart = this.addVariantToCart.bind(this);
         this.updateQuantityInCart = this.updateQuantityInCart.bind(this);
         this.removeLineItemInCart = this.removeLineItemInCart.bind(this);
+        this.updateSearch = this.updateSearch.bind(this);
+        this.updateSearchResults = this.updateSearchResults.bind(this);
     }
 
     componentWillMount() {
@@ -61,19 +49,23 @@ class App extends Component {
         });
     }
 
-    addVariantToCart(variantId, quantity) {
+    handleCartClose() {
         this.setState({
-            isCartOpen: true,
+            isCartOpen: false,
         });
+    }
 
-        const lineItemsToAdd = [{ variantId, quantity: parseInt(quantity, 10) }]
-        const checkoutId = this.state.checkout.id
+    updateSearchResults() {
+        const filteredItems = this.state.products.filter(
+            (product) => {
+                return product.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+            }
+        );
+        this.setState({ searchResults: filteredItems })
+    }
 
-        return this.props.client.checkout.addLineItems(checkoutId, lineItemsToAdd).then(res => {
-            this.setState({
-                checkout: res,
-            });
-        });
+    updateSearch(input) {
+        this.setState({ search: input })
     }
 
     updateQuantityInCart(lineItemId, quantity) {
@@ -97,40 +89,90 @@ class App extends Component {
         });
     }
 
-    handleCartClose() {
+    handleCartOpen() {
         this.setState({
-            isCartOpen: false,
+            isCartOpen: true,
         });
     }
 
+
+
+    addVariantToCart(variantId, quantity) {
+        this.setState({
+            isCartOpen: true,
+        });
+
+        const lineItemsToAdd = [{ variantId, quantity: parseInt(quantity, 10) }]
+        const checkoutId = this.state.checkout.id
+
+        return this.props.client.checkout.addLineItems(checkoutId, lineItemsToAdd).then(res => {
+            this.setState({
+                checkout: res,
+            });
+        });
+
+    }
+
     render() {
-        return (
-            <div className="App">
-                <header className="App__header">
-                    {!this.state.isCartOpen &&
-                        <div className="App__view-cart-wrapper">
-                            <button className="App__view-cart" onClick={() => this.setState({ isCartOpen: true })}>Cart</button>
-                        </div>
-                    }
-                    <div className="App__title">
-                        <h1>{this.state.shop.name}: React Example</h1>
-                        <h2>{this.state.shop.description}</h2>
-                    </div>
-                </header>
-                <Products
+
+        const renderProductGrid = (props) => {
+            return (
+                <ProductGrid
                     products={this.state.products}
+                    searchResults={this.state.searchResults}
+                    updateSearch={this.updateSearch}
+                    updateSearchResults={this.updateSearchResults}
+                    search={this.state.search}
+                    {...props}
+                />
+            )
+        }
+
+        const renderSingle = (props) => {
+            return (
+                <Single
                     client={this.props.client}
-                    addVariantToCart={this.addVariantToCart}
-                />
-                <Cart
-                    checkout={this.state.checkout}
                     isCartOpen={this.state.isCartOpen}
-                    handleCartClose={this.handleCartClose}
-                    updateQuantityInCart={this.updateQuantityInCart}
-                    removeLineItemInCart={this.removeLineItemInCart}
+                    products={this.state.products}
+                    addVariantToCart={this.addVariantToCart}
+                    {...props}
                 />
+            )
+        }
+
+        const renderHeader = (props) => {
+            return (
+                <Header
+                    handleCartOpen={this.handleCartOpen}
+                    products={this.state.products}
+                    updateSearch={this.updateSearch}
+                    updateSearchResults={this.updateSearchResults}
+                    search={this.state.search}
+                    {...props}
+                />
+            )
+        }
+
+        return ( 
+            <div className="App">
+                <BrowserRouter>
+                    <div>
+                        <Route path="/" render={renderHeader} />
+                        <Route exact path="/" render={renderProductGrid} />
+                        <Route exact path="/view/:productId" render={renderSingle} />
+                        <Cart
+                            updateQuantityInCart={this.updateQuantityInCart}
+                            removeLineItemInCart={this.removeLineItemInCart}
+                            checkout={this.state.checkout}
+                            isCartOpen={this.state.isCartOpen}
+                            handleCartClose={this.handleCartClose}
+                        />
+                        <Recommendations />
+                        <Footer />
+                    </div>
+                </BrowserRouter>
             </div>
-        );
+        )
     }
 }
 
