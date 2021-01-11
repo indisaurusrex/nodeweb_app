@@ -1,5 +1,5 @@
 {
-  "name": "nodeweb_app",
+  "name": "golden_shoe_react_node_app",
   "version": "1.0.0",
   "description": "Node based React Web App for Golden Shoe",
   "main": "server.js",
